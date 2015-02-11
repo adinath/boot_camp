@@ -91,4 +91,8 @@ public class ParkingLot {
     public SlotType getSlotType() {
         return slotType;
     }
+
+    public int getAvailableSlots() {
+        return slots.getAvailableSlots();
+    }
 }

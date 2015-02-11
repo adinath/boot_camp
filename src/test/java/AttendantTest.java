@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 
 public class AttendantTest {
@@ -18,7 +18,7 @@ public class AttendantTest {
         parkingLotList.add(new ParkingLot(2, SlotType.GOLD));
         Attendant attendee = new Attendant(parkingLotList);
 
-        assertTrue(attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST).isPresent());
+        assertThat(attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST).isPresent(), is(true));
 
     }
 
@@ -33,9 +33,33 @@ public class AttendantTest {
 
         Optional<Receipt> bookedSlot = attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST);
 
-        assertEquals(SlotType.FREE, bookedSlot.get().getSlotType());
+        assertThat(bookedSlot.get().getSlotType(), is(SlotType.FREE));
 
     }
 
+    @Test
+    public void attendantShouldBookFirstAvailableSlot() {
+        List<ParkingLot> parkingLots = new ArrayList<>();
+
+        parkingLots.add(new ParkingLot(2, SlotType.GOLD));
+        Attendant attendee = new Attendant(parkingLots);
+
+        assertThat(attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST).isPresent(), is(true));
+
+    }
+
+    @Test
+    public void attendantShouldBookParkingLotWithMaximumAvailableSlots() {
+        List<ParkingLot> parkingLots = new ArrayList<>();
+
+        parkingLots.add(new ParkingLot(4, SlotType.FREE));
+        parkingLots.add(new ParkingLot(7, SlotType.SILVER));
+
+        Attendant attendant = new Attendant(parkingLots);
+
+        Optional<Receipt> receipt = attendant.bookSlot(new Object(), SlotFinderStrategy.WITH_MAXIMUM_AVAILABLE_SLOTS);
+
+        assertThat(receipt.get().getSlotType(), is(SlotType.SILVER));
+    }
 
 }

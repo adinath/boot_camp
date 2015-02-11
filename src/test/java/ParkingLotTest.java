@@ -113,4 +113,13 @@ public class ParkingLotTest {
         parkingLot.parkIn(new Object());
         assertThat(parkingLot.parkIn(new Object()).isPresent(), is(false));
     }
+
+    @Test
+    public void shouldGetAvailableSlots(){
+        ParkingLot parkingLot = new ParkingLot(3);
+
+        parkingLot.parkIn(new Object());
+
+        assertThat(parkingLot.getAvailableSlots(), is(2));
+    }
 }

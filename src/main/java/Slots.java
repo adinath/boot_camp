@@ -42,4 +42,8 @@ public class Slots {
     private boolean isFillingFast() {
         return ((Float.valueOf(lots.size()) / Float.valueOf(size)) * 100) >= 80;
     }
+
+    public int getAvailableSlots() {
+            return size - lots.size();
+    }
 }
