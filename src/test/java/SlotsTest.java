@@ -11,9 +11,7 @@ public class SlotsTest {
 
         slots.allotSlot(new Object());
 
-
         assertThat(slots.getAvailableSlots(), is(1));
-
     }
 
 

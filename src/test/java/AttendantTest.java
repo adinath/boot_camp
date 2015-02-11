@@ -16,10 +16,10 @@ public class AttendantTest {
         List<ParkingLot> parkingLotList = new ArrayList<>();
 
         parkingLotList.add(new ParkingLot(2, SlotType.GOLD));
+
         Attendant attendee = new Attendant(parkingLotList);
 
         assertThat(attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST).isPresent(), is(true));
-
     }
 
     @Test
@@ -34,7 +34,6 @@ public class AttendantTest {
         Optional<Receipt> bookedSlot = attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST);
 
         assertThat(bookedSlot.get().getSlotType(), is(SlotType.FREE));
-
     }
 
     @Test
@@ -42,10 +41,10 @@ public class AttendantTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
 
         parkingLots.add(new ParkingLot(2, SlotType.GOLD));
+
         Attendant attendee = new Attendant(parkingLots);
 
         assertThat(attendee.bookSlot(new Object(), SlotFinderStrategy.CHEAPEST).isPresent(), is(true));
-
     }
 
     @Test

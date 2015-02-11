@@ -1,9 +1,6 @@
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by adinathshirsath on 11/02/15.
- */
 public class CheapestSlotFinder implements SlotFinder {
 
     @Override
