@@ -24,7 +24,7 @@ public class Slots {
     }
 
     public Optional<Integer> allotSlot(Object object) {
-        if (getStatus() == ParkingLotStatus.FULL) {
+        if (ParkingLotStatus.FULL == getStatus()) {
             return Optional.empty();
         }
 
@@ -44,6 +44,6 @@ public class Slots {
     }
 
     public int getAvailableSlots() {
-            return size - lots.size();
+        return size - lots.size();
     }
 }

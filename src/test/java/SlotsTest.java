@@ -13,6 +13,4 @@ public class SlotsTest {
 
         assertThat(slots.getAvailableSlots(), is(1));
     }
-
-
 }
