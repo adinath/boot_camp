@@ -8,7 +8,7 @@ public class Rectangle {
     }
 
     public static Rectangle createSquare(int side){
-        return new Rectangle(side, side);
+        return new Square(side);
     }
 
     public Rectangle(int length, int breadth) {

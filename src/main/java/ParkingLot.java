@@ -59,12 +59,9 @@ public class ParkingLot {
     }
 
     private void notifyEvents(final List<Notifiable> notifiables) {
-        notifiables.forEach(new Consumer<Notifiable>() {
-            @Override
-            public void accept(Notifiable notifiable) {
-                notifiable.notifyEvent();
-            }
-        });
+        notifiables.forEach(
+                (notifiable) -> notifiable.notifyEvent()
+        );
     }
 
     public void registerForParkingFullEvent(Notifiable notifiable) {

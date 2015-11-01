@@ -6,7 +6,6 @@ public class SlotFinderFactory {
                 return new CheapestSlotFinder();
             case WITH_MAXIMUM_AVAILABLE_SLOTS:
                 return new SpaciousSlotFinder();
-
             default:
                 return null;
         }
